@@ -38,7 +38,7 @@ import { trigger,state,style,transition,animate,keyframes } from '@angular/anima
   ]
 })
 export class AppComponent {
-  title = 'the app';
+  title = 'THE APP';
 
   state: string = 'small';
 
