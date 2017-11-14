@@ -5,7 +5,12 @@ import { trigger,state,style,transition,animate,keyframes } from '@angular/anima
 @Component({
   selector: 'app-root',
   template: `
+    <h1>Angular first app</h1>
+    <h2>{{title}}</h2>
+    <courses></courses>
+    <button (click)="testFunction()">test function</button>
     <p [@myAwesomeAnimation]="state" (click)="animateMe()">I will animate!</p>
+    <app-authors></app-authors>
   `,
   styles: [`
     p {
@@ -40,13 +45,54 @@ import { trigger,state,style,transition,animate,keyframes } from '@angular/anima
 export class AppComponent {
   title = 'THE APP';
 
-  state: string = 'small';
+  state = 'small';
 
-  constructor(private dataService:DataService) {
+  constructor(private dataService: DataService) {
 
   }
 
   animateMe(){
     this.state = (this.state === 'small' ? 'large' : 'small');
+  }
+
+  testFunction() {
+
+    class Point {
+      constructor(private _x?: number, private _y?: number) {}
+
+      draw() {
+        console.log('x: ' + this._x + ', y: ' + this._y);
+      }
+      get x() {
+        return this._x;
+      }
+      set x(value) {
+        if (value < 0) {
+          throw new Error('value cannot be less than 0.');
+        }
+        this._x = value;
+      }
+      get y() {
+        return this._y;
+      }
+      set y(value) {
+        if (value < 0) {
+          throw new Error('value cannot be less than 0.');
+        }
+        this._y = value;
+      }
+      getDistance(to: Point) {
+        let xx = Math.pow(this.x - to.x, 2);
+        console.log(xx);
+        let yy = Math.pow(this.y - to.y, 2);
+        console.log(yy);
+        console.log(Math.sqrt(xx + yy));
+      }
+    }
+
+    let point = new Point(1, 2);
+    point.x = 400;
+    point.draw();
+
   }
 }
