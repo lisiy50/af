@@ -4,14 +4,7 @@ import { trigger,state,style,transition,animate,keyframes } from '@angular/anima
 
 @Component({
   selector: 'app-root',
-  template: `
-    <h1>Angular first app</h1>
-    <h2>{{title}}</h2>
-    <courses></courses>
-    <button (click)="testFunction()">test function</button>
-    <p [@myAwesomeAnimation]="state" (click)="animateMe()">I will animate!</p>
-    <app-authors></app-authors>
-  `,
+  templateUrl: './app.component.html',
   styles: [`
     p {
       width:200px;
