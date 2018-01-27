@@ -1,0 +1,48 @@
+<form #form="ngForm" (submit)="log(form)">
+  <div class="form-group">
+    <label for="name">Course Name</label>
+      <input ngModel required minlength="5" #name="ngModel" id="name" type="text" name="name" (change)="log(name)" class="form-control">
+      <div *ngIf="name.touched && !name.valid" class="alert alert-danger">
+        <div *ngIf="name.errors.required">
+          Required
+        </div>
+        <div *ngIf="name.errors.minlength">
+          Min length {{name.control.errors.minlength.requiredLength}}
+        </div>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select ngModel required class="form-control" name="category" #category="ngModel">
+      <option value=""></option>
+      <option *ngFor="let c of categories" [value]="c.id" >{{c.name}}</option>
+    </select>
+    <div *ngIf="category.touched && !category.valid" class="alert alert-danger">
+      Required
+    </div>
+  </div>
+
+  <div class="checkbox">
+    <label>
+      <input ngModel type="checkbox" name="money-back"> Money-back
+    </label>
+  </div>
+
+  <p>
+    {{form.value | json}}
+  </p>
+
+  <div class="form-group">
+    <button
+      [disabled]="!form.valid"
+      type="submit"
+      name="button"
+      class="btn"
+      [ngClass]="{
+        'btn-primary': form.valid,
+        'btn-danger': !form.valid
+      }"
+    >Save</button>
+  </div>
+</form>

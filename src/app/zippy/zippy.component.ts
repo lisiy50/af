@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'app-zippy',
@@ -7,10 +7,21 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class ZippyComponent implements OnInit {
+  @Input('title') title: string;
+  @Input('content') content: string;
+  private _visible = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onClick() {
+    this._visible = !this._visible;
+  }
+
+  isVisible() {
+    return this._visible;
   }
 
 }

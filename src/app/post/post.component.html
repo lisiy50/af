@@ -1,0 +1,26 @@
+<div class="form-group">
+  <label for="">
+
+  </label>
+  <input 
+    (keyup.enter)="createPost(title)" #title
+    type="text" class="form-control">
+</div>
+
+<hr>
+
+<ul class="list-group">
+  <li *ngFor="let post of posts" class="list-group-item">
+      <button 
+        (click)="updatePost(post)"
+        class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </button>
+      <button 
+        (click)="deletePost(post)"
+        class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-trash"></span>
+      </button>
+    {{post.title}}
+  </li>
+</ul>

@@ -1,6 +1,12 @@
-<div class="head">
-  name
-</div>
-<div class="content">
-
+<div class="panel panel-default">
+    <div class="head panel-heading" (click)="onClick()">
+      {{ title }}
+      <span class="pull-right glyphicon" [ngClass]="{
+        'glyphicon-chevron-up': isVisible(),
+        'glyphicon-chevron-down': !isVisible()
+      }" aria-hidden="true"></span>
+    </div>
+    <div class="content panel-body" *ngIf="isVisible()">
+      <ng-content select=".content"></ng-content>
+    </div>
 </div>
