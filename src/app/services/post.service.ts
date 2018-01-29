@@ -1,5 +1,6 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class PostService {
@@ -21,7 +22,10 @@ export class PostService {
   }
 
   deletePost(id) {
-    return this.http.delete(this.url + '/' + id);
+    return this.http.delete(this.url + '/' + id)
+      // .catch((error: Response) => {
+
+      // });
   }
 
 }
