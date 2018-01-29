@@ -1,3 +1,5 @@
+import { NotFoundError } from './../common/not-found-error';
+import { AppError } from './../common/app-error';
 import { PostService } from './../services/post.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
@@ -67,8 +69,8 @@ export class PostComponent implements OnInit {
           let index = this.posts.indexOf(post);
           this.posts.splice(index, 1);
         }, 
-        (error: Response) => {
-          if (error.status === 404) {
+        (error: AppError) => {
+          if (error instanceof NotFoundError) {
               alert('This post has already been deleted.');
           } else {
             alert('An unexpected error occurred on delete post.');
