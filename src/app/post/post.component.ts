@@ -1,3 +1,4 @@
+import { BadInput } from './../common/bad-input';
 import { NotFoundError } from './../common/not-found-error';
 import { AppError } from './../common/app-error';
 import { PostService } from './../services/post.service';
@@ -39,10 +40,11 @@ export class PostComponent implements OnInit {
           post['id'] = response.json().id;
           this.posts.splice(0, 0, post);
         }, 
-        (error: Response) => {
-          if (error.status === 400) {
-            // this.form.setErrors(error.json());
-            // alert('');
+        (error: AppError) => {
+          console.log(error instanceof BadInput);
+          if (error instanceof BadInput) {
+              alert('This is create error.');
+              // this.form.setErrors(error.originalError);
           } else {
             alert('An unexpected error occurred on create post.');
             console.log(error);
@@ -70,6 +72,7 @@ export class PostComponent implements OnInit {
           this.posts.splice(index, 1);
         }, 
         (error: AppError) => {
+          console.log(error instanceof NotFoundError);
           if (error instanceof NotFoundError) {
               alert('This post has already been deleted.');
           } else {
