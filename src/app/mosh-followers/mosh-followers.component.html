@@ -1,0 +1,16 @@
+<h1>Mosh followers</h1>
+
+<div *ngFor="let follower of followers" class="media">
+  <div class="media-left">
+    <a [href]="follower.html_url">
+      <img 
+        [src]="follower.avatar_url" 
+        [alt]="follower.login" 
+        class="media-object img-circle avatar">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{follower.login}}</h4>
+    <a [href]="follower.html_url" target="_blank">{{follower.html_url}}</a>
+  </div>
+</div>

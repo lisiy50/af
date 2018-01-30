@@ -1,3 +1,4 @@
+import { MoshFollowersService } from './services/mosh-followers.service';
 import { PostService } from './services/post.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -28,6 +29,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { PostComponent } from './post/post.component';
 import { ErrorHandler } from '@angular/core';
 import { AppErrorHandler } from './common/app-error-handler';
+import { MoshFollowersComponent } from './mosh-followers/mosh-followers.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { AppErrorHandler } from './common/app-error-handler';
     CreateCourseFormComponent,
     NewCourseFormComponent,
     ChangePasswordComponent,
-    PostComponent
+    PostComponent,
+    MoshFollowersComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,7 @@ import { AppErrorHandler } from './common/app-error-handler';
     CoursersService,
     AuthorsService,
     PostService,
+    MoshFollowersService,
     { provide: ErrorHandler, useClass: AppErrorHandler}
   ],
   bootstrap: [AppComponent]
