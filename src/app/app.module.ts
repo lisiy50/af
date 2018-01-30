@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { DataService } from './data.service';
 import { MyNewComponentComponent } from './my-new-component/my-new-component.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesComponent } from './courses.component';
@@ -60,7 +59,6 @@ import { AppErrorHandler } from './common/app-error-handler';
     HttpModule
   ],
   providers: [
-    DataService,
     CoursersService,
     AuthorsService,
     PostService,
