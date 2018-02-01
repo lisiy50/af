@@ -3,6 +3,7 @@ import { PostService } from './services/post.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { MyNewComponentComponent } from './my-new-component/my-new-component.component';
@@ -30,6 +31,10 @@ import { PostComponent } from './post/post.component';
 import { ErrorHandler } from '@angular/core';
 import { AppErrorHandler } from './common/app-error-handler';
 import { MoshFollowersComponent } from './mosh-followers/mosh-followers.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -52,14 +57,25 @@ import { MoshFollowersComponent } from './mosh-followers/mosh-followers.componen
     NewCourseFormComponent,
     ChangePasswordComponent,
     PostComponent,
-    MoshFollowersComponent
+    MoshFollowersComponent,
+    NavbarComponent,
+    HomeComponent,
+    GithubProfileComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'followers/:username', component: GithubProfileComponent },
+      { path: 'followers', component: MoshFollowersComponent },
+      { path: 'posts', component: PostComponent },
+      { path: '**', component: NotFoundComponent },
+    ])
   ],
   providers: [
     CoursersService,
