@@ -6,10 +6,10 @@
 
     <ul class="list-group">
       <li 
-        *ngFor="let topic of topics.controls"
-        (click)='removeTopic(topic)'
+        *ngFor="let topicEntity of topic.controls"
+        (click)='removeTopic(topicEntity)'
         class="list-group-item">
-        {{topic.value}}
+        {{topicEntity.value}}
       </li>
     </ul>
 </form>

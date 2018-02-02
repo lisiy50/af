@@ -18,8 +18,12 @@ export class NewCourseFormComponent {
         email: ['', Validators.email],
         phone: []
       }),
-      topics: fb.array([])
+      topic: fb.array([])
     });
   }
+
+  addTopic(topic) {}
+
+  removeTopic(topic) {}
 
 }
