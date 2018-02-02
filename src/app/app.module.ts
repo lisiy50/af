@@ -71,7 +71,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HttpModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'followers/:username', component: GithubProfileComponent },
+      { path: 'followers/:id', component: GithubProfileComponent },
       { path: 'followers', component: MoshFollowersComponent },
       { path: 'posts', component: PostComponent },
       { path: '**', component: NotFoundComponent },
