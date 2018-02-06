@@ -1,3 +1,4 @@
+import { ArchiveViewComponent } from './archive-view/archive-view.component';
 import { MoshFollowersService } from './services/mosh-followers.service';
 import { PostService } from './services/post.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,6 +36,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { GithubProfileComponent } from './github-profile/github-profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ArchiveComponent } from './archive/archive.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NavbarComponent,
     HomeComponent,
     GithubProfileComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ArchiveComponent,
+    ArchiveViewComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +75,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HttpModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'followers/:id', component: GithubProfileComponent },
+      { path: 'archive/:year/:month', component: ArchiveViewComponent },
+      { path: 'archive', component: ArchiveComponent },
+      { path: 'followers/:id/:username', component: GithubProfileComponent },
       { path: 'followers', component: MoshFollowersComponent },
       { path: 'posts', component: PostComponent },
       { path: '**', component: NotFoundComponent },

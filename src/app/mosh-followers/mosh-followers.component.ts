@@ -1,5 +1,10 @@
+import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MoshFollowersService } from './../services/mosh-followers.service';
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-mosh-followers',
@@ -11,11 +16,25 @@ export class MoshFollowersComponent implements OnInit {
 
   followers: any[];
 
-  constructor(private service: MoshFollowersService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private service: MoshFollowersService
+  ) { }
 
   ngOnInit() {
-    this.service.getAll()
-    .subscribe(followers => this.followers = followers);
+    let obs = Observable.combineLatest([
+      this.route.paramMap,
+      this.route.queryParamMap
+    ])
+      .switchMap(combined => {
+        let id = combined[0].get('id');
+        let page = combined[1].get('page');
+
+        return this.service.getAll();
+      })
+      .subscribe(followers => {
+        this.followers = followers;
+      });
   }
 
 }
